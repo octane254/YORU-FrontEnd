@@ -17,28 +17,28 @@ html, body {
   height: 100%;
 }
 
-/* Page wrapper - remove centering, make full screen */
+/* Page wrapper - WHITE background like the image */
 .login-4-page {
   width: 100%;
   min-height: 100vh;
-  background: #ffffff;
+  background: #f8f9fa;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   display: flex;
   align-items: stretch;
+  position: relative;
 }
 
-/* Main container - full viewport, split 50/50 */
+/* Main container - split 50/50 */
 .login-4-card {
-  --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   width: 100%;
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
-  overflow: hidden;
+  background: #ffffff;
 }
 
-/* Animated background - slides left/right */
+/* SLIDING BACKGROUND - Restored */
 .login-4-card .card-bg {
   position: absolute;
   z-index: 2;
@@ -46,7 +46,7 @@ html, body {
   left: 0;
   bottom: 0;
   width: 50%;
-  background: var(--gradient);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   transform: translateX(0);
   transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -55,7 +55,30 @@ html, body {
   transform: translateX(100%);
 }
 
-/* Hero sections - brand/welcome side */
+/* Decorative circles on the sliding background */
+.login-4-card .card-bg::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.login-4-card .card-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: -150px;
+  width: 500px;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+
+/* LEFT/RIGHT - Hero panels (text on colored background) */
 .login-4-card .hero {
   position: relative;
   z-index: 3;
@@ -65,8 +88,8 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 32px;
-  padding: 80px 100px;
+  gap: 40px;
+  padding: 80px 60px;
   color: #ffffff;
   text-align: center;
   opacity: 0;
@@ -90,7 +113,7 @@ html, body {
   grid-row: 1;
 }
 
-/* Form sections - white background side */
+/* Forms - white background side */
 .login-4-card .form {
   position: relative;
   z-index: 1;
@@ -101,8 +124,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 28px;
-  padding: 80px 100px;
+  padding: 80px 60px;
   opacity: 0;
   visibility: hidden;
   transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
@@ -124,83 +146,86 @@ html, body {
   grid-row: 1;
 }
 
-/* Typography - bigger for web */
+/* Form content wrapper */
+.login-4-card .form > * {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Typography */
 .login-4-card h2 {
   margin: 0;
   font-weight: 700;
   font-size: 48px;
   letter-spacing: -1px;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 .login-4-card .form h2 {
-  font-size: 42px;
+  font-size: 32px;
   color: #1a202c;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  text-align: center;
+  font-weight: 700;
 }
 
 .login-4-card .hero p {
   margin: 0;
   opacity: 0.95;
   line-height: 1.7;
-  font-size: 19px;
-  max-width: 440px;
+  font-size: 18px;
+  max-width: 400px;
 }
 
-/* Hero buttons */
+/* Hero buttons - white background */
 .login-4-card .hero button {
-  padding: 18px 68px;
-  border-radius: 50px;
-  letter-spacing: 1px;
+  padding: 16px 48px;
+  border-radius: 8px;
+  letter-spacing: 0.3px;
   font-family: inherit;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  color: #667eea;
+  border: none;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   cursor: pointer;
   margin-top: 16px;
-  text-transform: uppercase;
 }
 
 .login-4-card .hero button:hover {
-  background: #ffffff;
-  color: #667eea;
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Social buttons */
 .login-4-card .sso {
-  width: 100%;
-  max-width: 460px;
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin: 16px 0;
+  gap: 16px;
+  margin: 24px 0;
 }
 
 .login-4-card .sso button {
   display: grid;
   place-items: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
   background: #f7fafc;
-  border: 2px solid #e2e8f0;
-  font-size: 20px;
+  border: 1px solid #e2e8f0;
+  font-size: 18px;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: #667eea;
+  color: #4a5568;
 }
 
 .login-4-card .sso button:hover {
   background: #edf2f7;
-  border-color: #667eea;
+  border-color: #cbd5e0;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Form container */
@@ -209,33 +234,32 @@ html, body {
   flex-direction: column;
   gap: 20px;
   width: 100%;
-  max-width: 460px;
 }
 
 .login-4-card .form p {
   margin: 0;
   text-align: center;
   color: #718096;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 /* Form inputs */
 .login-4-card .form input {
   font-family: inherit;
-  border-radius: 12px;
-  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
   background: #ffffff;
-  padding: 18px 20px;
+  padding: 14px 16px;
   color: #1a202c;
   width: 100%;
-  font-size: 16px;
+  font-size: 15px;
   transition: all 0.3s ease;
 }
 
 .login-4-card .form input:focus {
   outline: none;
   border-color: #667eea;
-  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
 .login-4-card .form input::placeholder {
@@ -259,56 +283,41 @@ html, body {
   text-decoration: underline;
 }
 
-/* Submit buttons */
+/* Submit button */
 .login-4-card .form button[type="submit"] {
   border: none;
-  padding: 18px 0;
-  border-radius: 12px;
+  padding: 14px 0;
+  border-radius: 8px;
   font-family: inherit;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   font-weight: 600;
   font-size: 16px;
   color: #ffffff;
   width: 100%;
-  margin-top: 12px;
+  margin-top: 8px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  box-shadow: 0 12px 28px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 14px rgba(102, 126, 234, 0.4);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .login-4-card .form button[type="submit"]:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 36px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
 }
 
 .login-4-card .form button[type="submit"]:active {
   transform: translateY(0);
 }
 
-/* Laptop screens */
-@media (max-width: 1400px) {
-  .login-4-card .hero,
-  .login-4-card .form {
-    padding: 60px 80px;
-  }
-
-  .login-4-card h2 {
-    font-size: 42px;
-  }
-
-  .login-4-card .form h2 {
-    font-size: 36px;
-  }
-}
-
-/* Tablet - stack vertically */
+/* Responsive - Tablet */
 @media (max-width: 1024px) {
   .login-4-card {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
   }
 
+  /* Slide vertically on mobile */
   .login-4-card .card-bg {
     width: 100%;
     height: 50%;
@@ -351,15 +360,14 @@ html, body {
   }
 
   .login-4-card h2 {
-    font-size: 32px;
+    font-size: 36px;
   }
 
   .login-4-card .form h2 {
-    font-size: 28px;
+    font-size: 26px;
   }
 
-  .login-4-card .form form,
-  .login-4-card .sso {
+  .login-4-card .form > * {
     max-width: 100%;
   }
 }
