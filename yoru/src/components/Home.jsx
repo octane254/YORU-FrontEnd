@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import "./styles/home.css";
 
 const Home = () => {
   // Library/manga data
@@ -195,39 +196,6 @@ const Home = () => {
           ))}
         </div>
       </section>
-    </div>
-  );
-};
-
-// MangaCard component (you'll need to create this)
-const MangaCard = ({ manga, showProgress, isBookmarked, onBookmark }) => {
-  return (
-    <div className="manga-card">
-      <div className="manga-cover">
-        <img src={manga.coverUrl} alt={manga.title} loading="lazy" />
-        {manga.isNew && <span className="badge new">NEW</span>}
-        <button 
-          className={`bookmark ${isBookmarked ? 'active' : ''}`}
-          onClick={onBookmark}
-        >
-          {isBookmarked ? '❤️' : '🤍'}
-        </button>
-      </div>
-      <div className="manga-info">
-        <h3>{manga.title}</h3>
-        <div className="meta">
-          <span className="rating">⭐ {manga.rating}</span>
-          <span className="chapter">Ch. {manga.latestChapter}</span>
-        </div>
-        {showProgress && manga.progress && (
-          <div className="progress-bar">
-            <div 
-              className="progress-fill" 
-              style={{ width: `${manga.progress}%` }}
-            />
-          </div>
-        )}
-      </div>
     </div>
   );
 };
